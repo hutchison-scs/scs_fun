@@ -1,8 +1,10 @@
 let voltage = 0
+let adc_resolution = 0
+let reference_voltage = 0
 input.onButtonPressed(Button.A, function () {
-    voltage = convert_voltage(pins.analogReadPin(AnalogPin.P0))
+    voltage = obtain_voltage(pins.analogReadPin(AnalogPin.P0))
     basic.showNumber(voltage)
-    if (voltage > 1.5) {
+    if (voltage > 3) {
         music.ringTone(523)
         basic.pause(1000)
     } else {
@@ -13,6 +15,8 @@ input.onButtonPressed(Button.A, function () {
     music.stopAllSounds()
 })
 // Converts the analog reading from Pin 0 to a voltage between 0 and 3 volts.
-function convert_voltage (value: number) {
-    return value / 1023 * 3
+function obtain_voltage (value: number) {
+    adc_resolution = 1023
+    reference_voltage = 3
+    return value / adc_resolution * reference_voltage
 }
