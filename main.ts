@@ -4,7 +4,7 @@ let reference_voltage = 0
 input.onButtonPressed(Button.A, function () {
     voltage = obtain_voltage(pins.analogReadPin(AnalogPin.P0))
     basic.showNumber(voltage)
-    if (voltage > 3) {
+    if (voltage >= 3) {
         music.ringTone(523)
         basic.pause(1000)
     } else {
