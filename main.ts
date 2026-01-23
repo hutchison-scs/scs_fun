@@ -1,10 +1,12 @@
+let threshold_voltage = 0
 let voltage = 0
 let adc_resolution = 0
 let reference_voltage = 0
 input.onButtonPressed(Button.A, function () {
+    threshold_voltage = 1.5
     voltage = obtain_voltage(pins.analogReadPin(AnalogPin.P0))
     basic.showNumber(voltage)
-    if (voltage >= 3) {
+    if (voltage >= threshold_voltage) {
         music.ringTone(523)
         basic.pause(1000)
     } else {
