@@ -3,7 +3,7 @@ let voltage = 0
 let adc_resolution = 0
 let reference_voltage = 0
 input.onButtonPressed(Button.A, function () {
-    threshold_voltage = 1.5
+    threshold_voltage = 2.9
     voltage = obtain_voltage(pins.analogReadPin(AnalogPin.P0))
     basic.showNumber(voltage)
     if (voltage >= threshold_voltage) {
